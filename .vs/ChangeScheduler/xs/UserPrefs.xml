@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{DA92B67D-0C30-4B41-8D45-9D6DC1D144A9}|Default">
+  <MonoDevelop.Ide.ItemProperties.ChangeScheduler PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="ChangeTaskRepository.Interface/IChangeTaskRepository.cs">
+    <Files>
+      <File FileName="ChangeTaskRepository.Interface/Class1.cs" Line="12" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ChangeScheduler" expanded="True">
+            <Node name="ChangeScheduler" expanded="True" />
+            <Node name="ChangeTaskRepository.Interface" expanded="True" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MultiItemStartupConfigurations />
+</Properties>
