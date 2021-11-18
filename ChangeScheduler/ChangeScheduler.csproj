@@ -21,6 +21,11 @@
     <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Pages\ChangeTasks\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ChangeScheduler.Common\ChangeScheduler.Common.csproj" />
+    <ProjectReference Include="..\ChangeScheduler.Repositories\ChangeScheduler.Repositories.csproj" />
   </ItemGroup>
 </Project>

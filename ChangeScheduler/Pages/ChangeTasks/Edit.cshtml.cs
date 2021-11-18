@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ChangeScheduler.Models;
+using ChangeScheduler.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,24 +13,24 @@ namespace ChangeScheduler.Pages.ChangeTasks
 {
     public class EditModel : PageModel
     {
-        private readonly ChangeSchedulerContext _context;
+        private readonly IRepository<ChangeTask> changeTaskRepository;
 
-        public EditModel(ChangeSchedulerContext context)
+        public EditModel(IRepository<ChangeTask> changeTaskRepository)
         {
-            _context = context;
+            this.changeTaskRepository = changeTaskRepository;
         }
 
         [BindProperty]
         public ChangeTask ChangeTask { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ChangeTask = await _context.ChangeTasks.FirstOrDefaultAsync(m => m.ID == id);
+            ChangeTask = await changeTaskRepository.GetAsync(id);
 
             if (ChangeTask == null)
             {
@@ -47,30 +48,9 @@ namespace ChangeScheduler.Pages.ChangeTasks
                 return Page();
             }
 
-            _context.Attach(ChangeTask).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ChangeTaskExists(ChangeTask.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await changeTaskRepository.UpdateAsync(ChangeTask);
 
             return RedirectToPage("./Index");
-        }
-
-        private bool ChangeTaskExists(int id)
-        {
-            return _context.ChangeTasks.Any(e => e.ID == id);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ChangeScheduler.Models;
+using ChangeScheduler.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -11,11 +12,11 @@ namespace ChangeScheduler.Pages.ChangeTasks
 {
     public class CreateModel : PageModel
     {
-        private readonly ChangeSchedulerContext _context;
+        private readonly IRepository<ChangeTask> changeTaskRepository;
 
-        public CreateModel(ChangeSchedulerContext context)
+        public CreateModel(IRepository<ChangeTask> changeTaskRepository)
         {
-            _context = context;
+            this.changeTaskRepository = changeTaskRepository;
         }
 
         public IActionResult OnGet()
@@ -34,8 +35,7 @@ namespace ChangeScheduler.Pages.ChangeTasks
                 return Page();
             }
 
-            _context.ChangeTasks.Add(ChangeTask);
-            await _context.SaveChangesAsync();
+            await changeTaskRepository.AddAsync(ChangeTask);
 
             return RedirectToPage("./Index");
         }

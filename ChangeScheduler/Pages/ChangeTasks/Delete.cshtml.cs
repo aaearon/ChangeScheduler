@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ChangeScheduler.Models;
+using ChangeScheduler.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -11,24 +12,24 @@ namespace ChangeScheduler.Pages.ChangeTasks
 {
     public class DeleteModel : PageModel
     {
-        private readonly ChangeSchedulerContext _context;
+        private readonly IRepository<ChangeTask> changeTaskRepository;
 
-        public DeleteModel(ChangeSchedulerContext context)
+        public DeleteModel(IRepository<ChangeTask> changeTaskRepository)
         {
-            _context = context;
+            this.changeTaskRepository = changeTaskRepository;
         }
 
         [BindProperty]
         public ChangeTask ChangeTask { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ChangeTask = await _context.ChangeTasks.FirstOrDefaultAsync(m => m.ID == id);
+            ChangeTask = await changeTaskRepository.GetAsync(id);
 
             if (ChangeTask == null)
             {
@@ -37,19 +38,18 @@ namespace ChangeScheduler.Pages.ChangeTasks
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(int? id)
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            ChangeTask = await _context.ChangeTasks.FindAsync(id);
+            ChangeTask = await changeTaskRepository.GetAsync(id);
 
             if (ChangeTask != null)
             {
-                _context.ChangeTasks.Remove(ChangeTask);
-                await _context.SaveChangesAsync();
+                await changeTaskRepository.DeleteAsync(id);
             }
 
             return RedirectToPage("./Index");

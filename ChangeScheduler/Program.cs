@@ -1,4 +1,6 @@
 using ChangeScheduler.Data;
+using ChangeScheduler.Models;
+using ChangeScheduler.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +10,8 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<ChangeSchedulerContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ChangeSchedulerContext")));
+
+builder.Services.AddTransient<IRepository<ChangeTask>, ChangeTaskRepository>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
