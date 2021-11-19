@@ -1,14 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using ChangeScheduler.Data.Repositories;
 using ChangeScheduler.Models;
-using ChangeScheduler.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace ChangeScheduler.Pages.ChangeTasks
+namespace ChangeScheduler.Web.Pages.ChangeTasks
 {
     public class CreateModel : PageModel
     {

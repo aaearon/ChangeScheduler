@@ -32,6 +32,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ChangeScheduler.Common\ChangeScheduler.Common.csproj" />
     <ProjectReference Include="..\ChangeScheduler.CyberArk\ChangeScheduler.CyberArk.csproj" />
-    <ProjectReference Include="..\ChangeScheduler.Repositories\ChangeScheduler.Repositories.csproj" />
+    <ProjectReference Include="..\ChangeScheduler.Data\ChangeScheduler.Data.csproj" />
   </ItemGroup>
 </Project>

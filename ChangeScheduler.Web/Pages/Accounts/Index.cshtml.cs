@@ -18,8 +18,15 @@ namespace ChangeScheduler.Web.Pages.Accounts
 
         public async Task OnGetAsync()
         {
-            var response = await _apiClient.GetAccountsAsync();
-            Accounts = (IList<Account>)response.Accounts;
+            try
+            {
+                var response = await _apiClient.GetAccountsAsync();
+                Accounts = (IList<Account>)response.Accounts;
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+            }
         }
     }
 }

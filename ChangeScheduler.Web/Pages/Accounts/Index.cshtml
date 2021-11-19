@@ -47,6 +47,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Safe)
             </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a>
+                </td>
         </tr>
 }
     </tbody>

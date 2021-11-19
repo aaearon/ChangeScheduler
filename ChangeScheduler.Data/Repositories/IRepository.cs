@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
 
-namespace ChangeScheduler.Repositories
+namespace ChangeScheduler.Data.Repositories
 {
     public interface IRepository<T>
     {

@@ -1,6 +1,4 @@
 ﻿using ChangeScheduler.Models;
-using System;
-using System.Linq;
 
 namespace ChangeScheduler.Data
 {

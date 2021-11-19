@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ChangeScheduler.Pages;
+namespace ChangeScheduler.Web.Pages;
 
 public class PrivacyModel : PageModel
 {

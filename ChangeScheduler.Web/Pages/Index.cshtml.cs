@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ChangeScheduler.Pages;
+namespace ChangeScheduler.Web.Pages;
 
 public class IndexModel : PageModel
 {

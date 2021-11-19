@@ -26,7 +26,7 @@ namespace ChangeScheduler.CyberArk.Api
                 request.Headers.Authorization = new AuthenticationHeaderValue(sessionToken);
                 response = await base.SendAsync(request, cancellationToken);
             }
-            
+
             return await base.SendAsync(request, cancellationToken);
 
             return response;

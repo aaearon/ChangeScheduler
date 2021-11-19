@@ -1,8 +1,8 @@
+using ChangeScheduler.Data.Repositories;
 using ChangeScheduler.Models;
-using ChangeScheduler.Repositories;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace ChangeScheduler.Pages.ChangeTasks
+namespace ChangeScheduler.Web.Pages.ChangeTasks
 {
     public class IndexModel : PageModel
     {
@@ -13,7 +13,7 @@ namespace ChangeScheduler.Pages.ChangeTasks
             this.changeTaskRepository = changeTaskRepository;
         }
 
-        public IList<ChangeTask> ChangeTask { get;set; }
+        public IList<ChangeTask> ChangeTask { get; set; }
 
         public async Task OnGetAsync()
         {

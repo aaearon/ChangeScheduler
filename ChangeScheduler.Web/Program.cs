@@ -1,17 +1,15 @@
 using ChangeScheduler.CyberArk;
 using ChangeScheduler.CyberArk.Api;
 using ChangeScheduler.Data;
+using ChangeScheduler.Data.Repositories;
+using ChangeScheduler.Data.Services;
 using ChangeScheduler.Models;
-using ChangeScheduler.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-
-builder.Services.AddDbContext<ChangeSchedulerContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("ChangeSchedulerContext")));
 
 var PvwaBaseAddressFromConfig = builder.Configuration["CyberArkEnvironment:PvwaBaseAddress"];
 var UsernameFromConfig = builder.Configuration["CyberArkEnvironment:Username"];
@@ -24,22 +22,22 @@ builder.Services.AddSingleton(new CyberArkAuthenticationRequest
     Password = PasswordFromConfig,
     ConcurrentSession = true
 });
-
 builder.Services.AddHttpClient<ICyberArkApiSessionClient, CyberArkApiSessionClient>(client =>
 {
     client.BaseAddress = new Uri(PvwaBaseAddressFromConfig);
 });
-
 builder.Services.AddTransient<CyberArkApiSessionTokenHandler>();
-
 builder.Services.AddHttpClient<ApiClient>(client =>
 {
     client.BaseAddress = new Uri(PvwaBaseAddressFromConfig);
 }).AddHttpMessageHandler<CyberArkApiSessionTokenHandler>();
 
 
+builder.Services.AddDbContext<ChangeSchedulerContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ChangeSchedulerContext")));
 builder.Services.AddTransient<IRepository<ChangeTask>, ChangeTaskRepository>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddTransient<IAccountService, AccountService>();
 
 var app = builder.Build();
 

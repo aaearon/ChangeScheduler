@@ -23,5 +23,15 @@ namespace ChangeScheduler.CyberArk
             }
         }
 
+        public async Task<Account> GetAccount(string id)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, $"api/Accounts/{id}");
+            using (var response = await _httpClient.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadFromJsonAsync<Account>();
+            }
+        }
+
     }
 }

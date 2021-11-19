@@ -1,34 +1,31 @@
 ﻿using ChangeScheduler.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 
-namespace ChangeScheduler.Repositories
+namespace ChangeScheduler.Data.Repositories
 {
     public class ChangeTaskRepository : IRepository<ChangeTask>
     {
 
         protected ChangeSchedulerContext context;
-        
+
         public ChangeTaskRepository(ChangeSchedulerContext context)
         {
             this.context = context;
         }
 
         public async Task<ChangeTask> AddAsync(ChangeTask entity)
-        {      
+        {
             await context.ChangeTasks.AddAsync(entity);
             await context.SaveChangesAsync();
-            
+
             return entity;
         }
 
         public async Task<IEnumerable<ChangeTask>> AllAsync()
         {
             var changeTasks = await context.ChangeTasks.ToListAsync();
-            
+
             return changeTasks;
         }
 
@@ -53,7 +50,7 @@ namespace ChangeScheduler.Repositories
         public async Task<ChangeTask> GetAsync(int id)
         {
             var changeTask = await context.ChangeTasks.FirstOrDefaultAsync(e => e.ID == id);
-            
+
             return changeTask;
         }
 

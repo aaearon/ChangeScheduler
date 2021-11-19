@@ -4,7 +4,7 @@ namespace ChangeScheduler.CyberArk.Models
 {
     public class Account
     {
-        
+
         [JsonPropertyName("id")]
         public string Id { get; set; }
         [JsonPropertyName("name")]
@@ -15,6 +15,6 @@ namespace ChangeScheduler.CyberArk.Models
         public string Address { get; set; }
         [JsonPropertyName("username")]
         public string Username { get; set; }
-        
+
     }
 }

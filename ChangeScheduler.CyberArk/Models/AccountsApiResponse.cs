@@ -5,6 +5,6 @@ namespace ChangeScheduler.CyberArk.Models
     public class AccountsApiResponse
     {
         [JsonPropertyName("value")]
-        public IEnumerable<Account> Accounts { get; set;}
+        public IEnumerable<Account> Accounts { get; set; }
     }
 }
