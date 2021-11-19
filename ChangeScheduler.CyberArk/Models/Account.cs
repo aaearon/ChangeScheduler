@@ -1,4 +1,5 @@
 ﻿using System.Text.Json.Serialization;
+using ChangeScheduler.CyberArk.Api;
 
 namespace ChangeScheduler.CyberArk.Models
 {
@@ -30,8 +31,8 @@ namespace ChangeScheduler.CyberArk.Models
 
         public string Status { get; set; }
         [JsonPropertyName("lastModifiedTime")]
-
-        public long LastModifiedTime { get; set; }
+        [JsonConverter(typeof(UnixMillisecondsToDateTimeConverter))]
+        public DateTime LastModifiedTime { get; set; }
         [JsonPropertyName("lastReconciledTime")]
 
         public long LastReconciledTime { get; set; }
