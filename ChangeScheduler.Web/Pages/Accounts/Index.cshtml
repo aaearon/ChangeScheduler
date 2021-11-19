@@ -1,0 +1,53 @@
+﻿@page
+@model ChangeScheduler.Web.Pages.Accounts.IndexModel
+
+@{
+    ViewData["Title"] = "Accounts";
+}
+
+<h1>Accounts</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Accounts[0].Safe)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Accounts) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Safe)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

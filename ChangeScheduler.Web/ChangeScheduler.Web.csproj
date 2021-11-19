@@ -13,6 +13,11 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SQLite" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.0" />
   </ItemGroup>
 
@@ -26,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ChangeScheduler.Common\ChangeScheduler.Common.csproj" />
+    <ProjectReference Include="..\ChangeScheduler.CyberArk\ChangeScheduler.CyberArk.csproj" />
     <ProjectReference Include="..\ChangeScheduler.Repositories\ChangeScheduler.Repositories.csproj" />
   </ItemGroup>
 </Project>

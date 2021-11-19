@@ -1,5 +1,4 @@
 ﻿using ChangeScheduler.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 
